@@ -1,19 +1,19 @@
 {
   "canisters": {
-    "counter": {
-      "main": "src/counter-canister/main.mo",
-      "type": "motoko"
+    "microblog": {
+      "type": "motoko",
+      "main": "src/microblog/main.mo"
+    },
+    "microblog2": {
+      "type": "motoko",
+      "main": "src/microblog/main.mo"
     },
     "assets": {
-      "dependencies": [
-        "counter"
-      ],
+      "dependencies": ["microblog"],
       "frontend": {
         "entrypoint": "dist/index.html"
       },
-      "source": [
-        "dist/"
-      ],
+      "source": ["dist/"],
       "type": "assets"
     }
   },
@@ -22,16 +22,14 @@
       "packtool": ""
     }
   },
-  "dfx": "0.8.1",
+  "dfx": "0.9.0",
   "networks": {
     "local": {
       "bind": "127.0.0.1:8000",
       "type": "ephemeral"
     },
     "ic": {
-      "providers": [
-        "https://mainnet.dfinity.network"
-      ],
+      "providers": ["https://mainnet.dfinity.network"],
       "type": "persistent"
     }
   },

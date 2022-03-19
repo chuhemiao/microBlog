@@ -1,8 +1,6 @@
-# Dfinity-React-Typescript-tailwind2
+# microbolog
 
 ## Quick Start
-
-![Demo Screenshots](./staic/Screenshots.png)
 
 A recipe,template that includes Vite, Dfinity, Typescript, ReactJS, React-Router, Tailwind2.
 
@@ -44,16 +42,13 @@ npm run dev
 
 Which will start a server at `http://localhost:8080`, proxying API requests to the replica at port 8000.
 
-### Error fix
+### 关注 canister
 
-+ Address already in use (os error 48)
-  + sudo killall dfx replica nodemanager
+dfx canister call microblog follow "(principal \"eaeyc-diaaa-aaaal-qaqnq-cai\")"
+dfx canister call microblog follow "(principal \"bvk5z-yiaaa-aaaal-qapwa-cai\")"
 
-+ Error: EACCES: permission denied, scandir '/Users/xxxxx/work/Dfinity-React-Typescript-tailwind2/.dfx/state/replicated_state/node-100/crypto'
-  + If the dfx directory permission does not work, please set the directory permission.
-
-# [Reference]
-
-+ https://github.com/MioQuispe/create-ic-app
-
-+ https://github.com/FloorLamp/dfinity-react-ts-tailwind-starter
+- bvk5z-yiaaa-aaaal-qapwa-cai
+- frog5-3aaaa-aaaal-qaqia-cai
+- eaeyc-diaaa-aaaal-qaqnq-cai
+- adxrq-lyaaa-aaaal-qaqwq-cai
+- lphux-4aaaa-aaaal-qarka-cai
