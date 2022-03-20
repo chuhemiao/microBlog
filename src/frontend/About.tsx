@@ -1,9 +1,7 @@
 import { microblog } from "canisters/microblog"
 import React, { useEffect, useState } from "react"
+import { message } from "react-message-popup"
 import { Auth } from "./Auth"
-
-type Time = bigint
-type Message = { content: string; time: Time; ftime?: any }
 
 export function About() {
   const [title, setTitle] = useState("")
@@ -11,8 +9,19 @@ export function About() {
   const [contents, setContent] = useState("")
 
   const postMessage = async () => {
-    let res = await microblog.post(contents, title, lastTags)
-    console.log(res, 7777)
+    // isLogin
+    const l = localStorage.getItem("isLogin")
+    if (l) {
+      if (!title || !contents) {
+        message.warn("标题和内容不能为空", 2000)
+        return false
+      }
+      let res = await microblog.post(contents, title, lastTags)
+      console.log(res, 7777)
+      message.success("发帖成功", 2000)
+    } else {
+      message.error("未登录", 2000)
+    }
   }
   useEffect(() => {
     // refreshPosts()
@@ -26,10 +35,10 @@ export function About() {
             <div className="flex items-center justify-between">
               <div>
                 <a
-                  href="#"
+                  href="/"
                   className="text-xl font-bold text-gray-800 md:text-2xl"
                 >
-                  kkdemian
+                  kk德米安
                 </a>
               </div>
               <div>
@@ -45,16 +54,16 @@ export function About() {
             </div>
             <div className="flex-col hidden md:flex md:flex-row md:-mx-4">
               <a
-                href="#"
+                href="/"
                 className="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0"
               >
-                Home
+                首页
               </a>
               <a
-                href="/about"
+                href="/posts"
                 className="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0"
               >
-                Blog
+                发帖
               </a>
             </div>
             <div className="w-1/3">

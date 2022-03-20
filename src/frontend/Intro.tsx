@@ -1,6 +1,7 @@
 import { microblog } from "canisters/microblog"
 import { format } from "date-fns"
 import React, { useEffect, useState } from "react"
+import { message } from "react-message-popup"
 import avator from "../../staic/avator.jpg"
 import icpLogo from "../../staic/dfinity.svg"
 import { Auth } from "./Auth"
@@ -19,8 +20,6 @@ type Follow_info = {
   cid: string
   name?: [] | [string]
 }
-
-type tagList = []
 
 export function Intro() {
   const [posts, setPosts] = useState<Array<Message>>([
@@ -68,15 +67,17 @@ export function Intro() {
       res[i].ftime = timee
       tag.push(res[i].tags)
     }
-
-    console.log(tag, 222)
-
     setPosts(res)
     setTags(tag)
   }
   // 添加作者
   const setName = async () => {
+    if (!names) {
+      message.error("请输入作者名字", 2000)
+    }
+
     let res = await microblog.set_name(names)
+    message.success("添加作者成功:" + names, 2000)
     console.log(res, 7777)
   }
 
@@ -88,8 +89,12 @@ export function Intro() {
   // 添加关注
 
   const setFollower = async () => {
-    let res = await microblog.follow_by_text(followUser)
-    console.log(res, 7777)
+    if (!followUser) {
+      message.error("请输入关注着的canister id", 2000)
+    }
+
+    await microblog.follow_by_text(followUser)
+    message.success("添加关注成功", 2000)
   }
 
   // 返回follow
@@ -103,7 +108,13 @@ export function Intro() {
   // Timeline
   const getTimeline = async () => {
     let res = await microblog.timeline(BigInt(1647146409052325083))
-    console.log(res, 222)
+
+    for (let i = 0; i < res.length; i++) {
+      const temp = Number(res[i].time) / 1000000
+      const timee = format(temp, "MM/dd/yyyy")
+      //@ts-ignore
+      res[i].ftime = timee
+    }
 
     setTimeline(res)
   }
@@ -111,10 +122,8 @@ export function Intro() {
   // 返回其它人的博客
 
   const getPeopleList = async (cid: any) => {
-    console.log(cid, 2222)
-
     let res = await microblog.someone_posts(cid)
-    console.log(res, 222)
+    message.success("内容将从左侧刷新", 2000)
 
     setPosts(res)
   }
@@ -134,10 +143,10 @@ export function Intro() {
             <div className="flex items-center justify-between">
               <div>
                 <a
-                  href="#"
+                  href="/"
                   className="text-xl font-bold text-gray-800 md:text-2xl"
                 >
-                  kkdemian
+                  kk德米安
                 </a>
               </div>
               <div>
@@ -153,16 +162,16 @@ export function Intro() {
             </div>
             <div className="flex-col hidden md:flex md:flex-row md:-mx-4">
               <a
-                href="#"
+                href="/"
                 className="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0"
               >
-                Home
+                首页
               </a>
               <a
-                href="/about"
+                href="/posts"
                 className="my-1 text-gray-800 hover:text-blue-500 md:mx-4 md:my-0"
               >
-                Blog
+                发帖
               </a>
             </div>
             <div className="w-1/3">
@@ -292,9 +301,7 @@ export function Intro() {
                 </div>
               </div>
               <div className="px-8 mt-10">
-                <h1 className="mb-4 text-xl font-bold text-gray-700">
-                  Categories
-                </h1>
+                <h1 className="mb-4 text-xl font-bold text-gray-700">Tags</h1>
                 <div className="flex flex-col max-w-sm px-4 py-6 mx-auto bg-white rounded-lg shadow-md">
                   <ul>
                     {tagList.map((item, index) => (

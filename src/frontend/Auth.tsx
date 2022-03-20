@@ -18,6 +18,7 @@ function Auth() {
       const identity = client.getIdentity()
       const principal = identity.getPrincipal().toString()
       setSignedIn(true)
+      window.localStorage.setItem("isLogin", "1")
       setPrincipal(principal)
     }
   }
@@ -35,12 +36,14 @@ function Auth() {
       })
     })
     setSignedIn(true)
+    window.localStorage.setItem("isLogin", "1")
     setPrincipal(principal)
   }
 
   const signOut = async () => {
     await client.logout()
     setSignedIn(false)
+    window.localStorage.setItem("isLogin", "0")
     setPrincipal("")
   }
 
