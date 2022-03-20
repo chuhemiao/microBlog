@@ -14,8 +14,8 @@ actor {
   
   public type Message = {
       content : Text;
-      title : Text;
-      tags : Text;
+      // title : Text;
+      // tags : Text;
       time: Time.Time;
       author: Text;
   };
@@ -115,8 +115,9 @@ actor {
       };
   };
 
-  public shared(msg) func post(text:Text,title:Text, tags:Text) : async (){
-    let message : Message = { content=text; time = Time.now(); author = name;title = title;tags = tags; };
+  public shared(msg) func post(text:Text) : async (){
+    // let message : Message = { content=text; time = Time.now(); author = name;title = title;tags = tags; };
+    let message : Message = { content=text; time = Time.now(); author = name; };
     // assert(Principal.toText(msg.caller) == "exp33-minxe-lqmzo-dh3fa-ostfz-tkaue-kn7ow-6cioh-gzfw7-px7yn-pqe");
     messages := List.push(message, messages) ;
   };

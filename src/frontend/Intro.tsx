@@ -11,9 +11,9 @@ type Message = {
   content: string
   time: Time
   ftime?: any
-  tags: string
+  // tags: string
   author: string
-  title: string
+  // title: string
 }
 
 type Follow_info = {
@@ -28,8 +28,8 @@ export function Intro() {
       time: BigInt(0),
       ftime: "",
       author: "",
-      tags: "",
-      title: "",
+      // tags: "",
+      // title: "",
     },
   ])
 
@@ -51,8 +51,8 @@ export function Intro() {
       time: BigInt(0),
       ftime: "",
       author: "",
-      tags: "",
-      title: "",
+      // tags: "",
+      // title: "",
     },
   ])
 
@@ -65,10 +65,10 @@ export function Intro() {
       const timee = format(temp, "MM/dd/yyyy")
       //@ts-ignore
       res[i].ftime = timee
-      tag.push(res[i].tags)
+      // tag.push(res[i].tags)
     }
     setPosts(res)
-    setTags(tag)
+    // setTags(tag)
   }
   // 添加作者
   const setName = async () => {
@@ -196,7 +196,7 @@ export function Intro() {
               {posts.map((item, index) => (
                 <div className="mt-6" key={index}>
                   <div className="max-w-4xl px-10 py-6 mx-auto bg-white rounded-lg shadow-md">
-                    <div className="flex items-center justify-between">
+                    {/* <div className="flex items-center justify-between">
                       <span className="font-light text-gray-600">
                         {item.ftime}
                       </span>
@@ -206,14 +206,14 @@ export function Intro() {
                       >
                         {item.tags}
                       </a>
-                    </div>
+                    </div> */}
                     <div className="mt-2">
-                      <a
+                      {/* <a
                         href="#"
                         className="text-2xl font-bold text-gray-700 hover:underline"
                       >
                         {item.title}
-                      </a>
+                      </a> */}
                       <p className="mt-2 text-gray-600">{item.content}</p>
                     </div>
                     <div className="flex items-center justify-between mt-4">
@@ -300,7 +300,7 @@ export function Intro() {
                   </button>
                 </div>
               </div>
-              <div className="px-8 mt-10">
+              {/* <div className="px-8 mt-10">
                 <h1 className="mb-4 text-xl font-bold text-gray-700">Tags</h1>
                 <div className="flex flex-col max-w-sm px-4 py-6 mx-auto bg-white rounded-lg shadow-md">
                   <ul>
@@ -316,7 +316,7 @@ export function Intro() {
                     ))}
                   </ul>
                 </div>
-              </div>
+              </div> */}
               <div className="px-8 mt-10">
                 <h1 className="mb-4 text-xl font-bold text-gray-700">
                   Following
@@ -350,14 +350,14 @@ export function Intro() {
                     className="flex flex-col max-w-sm px-8 py-6 mx-auto bg-white rounded-lg shadow-md mb-3"
                     key={i}
                   >
-                    <div className="mt-4">
+                    {/* <div className="mt-4">
                       <a
                         href="#"
                         className="text-lg font-medium text-gray-700 hover:underline"
                       >
                         {item.title}
                       </a>
-                    </div>
+                    </div> */}
                     <div className="flex items-center justify-between mt-4">
                       <div className="flex items-center">
                         <img

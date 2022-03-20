@@ -12,11 +12,12 @@ export function About() {
     // isLogin
     const l = localStorage.getItem("isLogin")
     if (l) {
-      if (!title || !contents) {
-        message.warn("标题和内容不能为空", 2000)
-        return false
-      }
-      let res = await microblog.post(contents, title, lastTags)
+      // if (!title || !contents) {
+      //   message.warn("标题和内容不能为空", 2000)
+      //   return false
+      // }
+      // let res = await microblog.post(contents, title, lastTags)
+      let res = await microblog.post(contents)
       console.log(res, 7777)
       message.success("发帖成功", 2000)
     } else {
