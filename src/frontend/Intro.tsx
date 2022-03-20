@@ -8,7 +8,7 @@ import { Auth } from "./Auth"
 
 type Time = bigint
 type Message = {
-  content: string
+  text: string
   time: Time
   ftime?: any
   // tags: string
@@ -24,7 +24,7 @@ type Follow_info = {
 export function Intro() {
   const [posts, setPosts] = useState<Array<Message>>([
     {
-      content: "",
+      text: "",
       time: BigInt(0),
       ftime: "",
       author: "",
@@ -47,7 +47,7 @@ export function Intro() {
 
   const [timelineList, setTimeline] = useState<Array<Message>>([
     {
-      content: "",
+      text: "",
       time: BigInt(0),
       ftime: "",
       author: "",
@@ -214,7 +214,7 @@ export function Intro() {
                       >
                         {item.title}
                       </a> */}
-                      <p className="mt-2 text-gray-600">{item.content}</p>
+                      <p className="mt-2 text-gray-600">{item.text}</p>
                     </div>
                     <div className="flex items-center justify-between mt-4">
                       <a href="#" className="text-blue-500 hover:underline">
@@ -350,14 +350,14 @@ export function Intro() {
                     className="flex flex-col max-w-sm px-8 py-6 mx-auto bg-white rounded-lg shadow-md mb-3"
                     key={i}
                   >
-                    {/* <div className="mt-4">
+                    <div className="mt-4">
                       <a
                         href="#"
                         className="text-lg font-medium text-gray-700 hover:underline"
                       >
-                        {item.title}
+                        {item.text}
                       </a>
-                    </div> */}
+                    </div>
                     <div className="flex items-center justify-between mt-4">
                       <div className="flex items-center">
                         <img

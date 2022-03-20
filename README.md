@@ -52,3 +52,7 @@ dfx canister call microblog follow "(principal \"bvk5z-yiaaa-aaaal-qapwa-cai\")"
 - eaeyc-diaaa-aaaal-qaqnq-cai
 - adxrq-lyaaa-aaaal-qaqwq-cai
 - lphux-4aaaa-aaaal-qarka-cai
+
+### install
+
+sudo dfx build --network ic

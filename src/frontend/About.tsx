@@ -82,7 +82,7 @@ export function About() {
               </p>
               <div className="mt-8 max-w-md">
                 <div className="grid grid-cols-1 gap-6">
-                  <label className="block">
+                  {/* <label className="block">
                     <span className="text-gray-700">标题</span>
                     <input
                       type="text"
@@ -104,7 +104,7 @@ export function About() {
                       <option>GAME</option>
                       <option>TECH</option>
                     </select>
-                  </label>
+                  </label> */}
                   <label className="block">
                     <span className="text-gray-700">添加帖子详情</span>
                     <textarea
